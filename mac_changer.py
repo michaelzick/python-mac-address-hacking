@@ -30,7 +30,7 @@ def get_current_mac(arguments):
     ifconfig_result = subprocess.check_output(
         ['ifconfig', arguments.interface])
     mac_search_result = re.search(
-        r'\w\w:\w\w:\w\w:\w\w:\w\w:\w\w', ifconfig_result.decode('utf-8'))
+        r'\w\w:\w\w:\w\w:\w\w:\w\w:\w\w', str(ifconfig_result))
     if mac_search_result:
         return mac_search_result.group(0)
     return '[-] Could not find a MAC address for ' + arguments.interface + '.'
